@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-
+require('dotenv').config()
 const randomUserAPI = require("./routes/randomUser.route");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // random user api
 app.use("/user", randomUserAPI);
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 app.get("/", (req, res) => {
   res.send("Server running");
 });
